@@ -12,8 +12,6 @@ const Feed = () => {
     (state) => state.tweets
   );
 
-  console.log(tweets);
-
   useEffect(() => {
     if (isError) {
       console.log(message);

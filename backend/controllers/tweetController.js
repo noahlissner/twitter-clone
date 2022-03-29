@@ -8,9 +8,6 @@ const User = require("../models/userModel");
 // @access  Private
 const getTweets = asyncHandler(async (req, res) => {
   const tweets = await Tweet.find({ user: req.user.id });
-  tweets.forEach((tweet) => {
-    console.log(tweet.populate("user"));
-  });
   res.status(200).json(tweets);
 });
 
