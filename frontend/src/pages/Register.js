@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { register, reset } from "../features/auth/authSlice";
+import { login, register, reset } from "../features/auth/authSlice";
 
 import BG from "../assets/images/lohp_1302x955.png";
 import Logo from "../assets/images/2021 Twitter logo - white.png";
@@ -57,6 +57,15 @@ const Register = () => {
 
       dispatch(register(userData));
     }
+  };
+
+  const handleGuestLogin = () => {
+    const userData = {
+      email: "guest@guest.com",
+      password: "guest",
+    };
+
+    dispatch(login(userData));
   };
 
   const inputStyles =
@@ -141,6 +150,13 @@ const Register = () => {
           >
             Login
           </a>
+          <button
+            onClick={handleGuestLogin}
+            className="text-[#1d9bf0] font-[15px] mt-5 w-[300px] flex items-center justify-center 
+            h-[38px] rounded-full border-[1px] border-[#536471] hover:bg-[#1d9bf01a] transition-colors duration-200"
+          >
+            Login as Guest
+          </button>
         </div>
       </div>
     </div>

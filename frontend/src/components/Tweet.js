@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { FiMoreHorizontal, FiShare } from "react-icons/fi";
 import { BsDot } from "react-icons/bs";
@@ -7,14 +7,20 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { GoGraph } from "react-icons/go";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTweet } from "../features/tweets/tweetSlice";
+import TweetModal from "./TweetModal";
 
 const Tweet = ({ tweet }) => {
-  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const { user } = useSelector((state) => state.auth);
 
   return (
-    <div className="border-b cursor-pointer hover:bg-[#00000008] transition-colors duration-100">
+    <div
+      className={`relative border-b cursor-pointer transition-colors duration-100 ${
+        !open && "hover:bg-[#00000008]"
+      }`}
+    >
       {/* Wrapper */}
       <div className="px-4 flex py-3">
         {/* user image (left side) */}
@@ -27,19 +33,26 @@ const Tweet = ({ tweet }) => {
           <div className="flex justify-between items-center">
             <div className="text-[15px] text-[#0f1419] flex items-center gap-1">
               <span className="font-bold hover:underline">{tweet.name}</span>
-              <span>@{tweet.name.replace(/\s+/g, "_").toLowerCase()}</span>
+              <span>@{tweet?.name.replace(/\s+/g, "_").toLowerCase()}</span>
               <BsDot />
+
               <span className="hover:underline">
-                {moment(tweet.createdAt).fromNow()}
+                {moment(tweet?.createdAt).fromNow()}
               </span>
             </div>
-            <div className="hover:bg-[#1d9bf01a] hover:text-[#1d9bf0] p-2 rounded-full transition-colors duration-200">
-              <FiMoreHorizontal size={18} color="currentColor" />
-            </div>
+            {user?._id === tweet?.user && (
+              <div
+                onClick={() => setOpen(!open)}
+                className="hover:bg-[#1d9bf01a] hover:text-[#1d9bf0] p-2 rounded-full transition-colors duration-200"
+              >
+                <FiMoreHorizontal size={18} color="currentColor" />
+              </div>
+            )}
+            {open && <TweetModal id={tweet?._id} />}
           </div>
           {/* Text/Messsage */}
           <div>
-            <p className="text-[15px] text-[#0f1419]">{tweet.text}</p>
+            <p className="text-[15px] text-[#0f1419]">{tweet?.text}</p>
           </div>
           {/* Features */}
           <div className="mt-3 flex justify-between max-w-[425px]">

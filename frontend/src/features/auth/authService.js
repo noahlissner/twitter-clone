@@ -7,7 +7,7 @@ const register = async (userData) => {
   const response = await axios.post(API_URL, userData);
 
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+    localStorage.setItem("twitter-clone-user", JSON.stringify(response.data));
   }
 
   return response.data;
@@ -18,7 +18,7 @@ const login = async (userData) => {
   const response = await axios.post(API_URL + "login", userData);
 
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+    localStorage.setItem("twitter-clone-user", JSON.stringify(response.data));
   }
 
   return response.data;
@@ -26,7 +26,7 @@ const login = async (userData) => {
 
 // Logout
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("twitter-clone-user");
 };
 
 const authService = {
