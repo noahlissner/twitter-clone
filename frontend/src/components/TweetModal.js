@@ -15,7 +15,7 @@ const TweetModal = ({ id }) => {
   const optionStyle =
     "text-[#0f1419] p-4 flex items-center gap-3 w-full cursor-default";
   return (
-    <div className="absolute z-[100] w-full max-w-[300px] bg-white border right-5 top-10 overflow-hidden rounded-lg shadow-lg">
+    <>
       <div
         onClick={handleDelete}
         className="text-[#f4212e] p-4 flex items-center gap-3 w-full hover:bg-[#00000008]"
@@ -43,7 +43,7 @@ const TweetModal = ({ id }) => {
         <VscGraph />
         <span>View Tweet analytics</span>
       </div>
-    </div>
+    </>
   );
 };
 

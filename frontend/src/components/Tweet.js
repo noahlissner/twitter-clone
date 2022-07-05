@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { FiMoreHorizontal, FiShare } from "react-icons/fi";
 import { BsDot } from "react-icons/bs";
@@ -11,8 +11,24 @@ import { useSelector } from "react-redux";
 import TweetModal from "./TweetModal";
 
 const Tweet = ({ tweet }) => {
+  const ref = useRef();
+
   const [open, setOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.addEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [open]);
 
   return (
     <div
@@ -41,13 +57,20 @@ const Tweet = ({ tweet }) => {
             </div>
             {user?._id === tweet?.user && (
               <div
-                onClick={() => setOpen(!open)}
+                onClick={() => setOpen(true)}
                 className="hover:bg-[#1d9bf01a] hover:text-[#1d9bf0] p-2 rounded-full transition-colors duration-200"
               >
                 <FiMoreHorizontal size={18} color="currentColor" />
               </div>
             )}
-            {open && <TweetModal id={tweet?._id} />}
+            {open && (
+              <div
+                ref={ref}
+                className="absolute z-[100] w-full max-w-[300px] bg-white border right-5 top-10 overflow-hidden rounded-lg shadow-lg"
+              >
+                <TweetModal id={tweet?._id} />
+              </div>
+            )}
           </div>
           {/* Text/Messsage */}
           <div>
