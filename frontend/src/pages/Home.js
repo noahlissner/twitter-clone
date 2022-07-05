@@ -12,11 +12,11 @@ const Home = () => {
 
   const { user } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/register");
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate("/register");
+  //   }
+  // }, [user]);
 
   return (
     <>
