@@ -3,7 +3,6 @@ const colors = require("colors");
 const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware/errorMiddleware");
-const port = process.env.PORT || 5000;
 
 connectDB();
 
@@ -17,6 +16,6 @@ app.use("/api/tweets", require("./routes/tweetRoutes"));
 
 app.use(errorHandler);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Server listening to port");
 });
