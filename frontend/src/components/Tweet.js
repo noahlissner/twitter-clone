@@ -7,8 +7,7 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { GoGraph } from "react-icons/go";
 import moment from "moment";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteTweet } from "../features/tweets/tweetSlice";
+import { useSelector } from "react-redux";
 import TweetModal from "./TweetModal";
 
 const Tweet = ({ tweet }) => {

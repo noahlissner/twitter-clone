@@ -1,4 +1,3 @@
-import React from "react";
 import { IoTrashOutline, IoCodeSlash } from "react-icons/io5";
 import { BsPin, BsClipboardPlus } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";

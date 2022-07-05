@@ -1,6 +1,3 @@
-import React from "react";
-import { RiHome5Line } from "react-icons/ri";
-
 const NavItem = ({ href, icon, text }) => {
   return (
     <a href={href} className="w-full flex py-1 group">

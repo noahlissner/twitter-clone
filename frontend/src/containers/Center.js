@@ -24,8 +24,6 @@ const Feed = () => {
     };
   }, [user, isError, message, dispatch]);
 
-  // console.log(tweets);
-
   return (
     <div className="border-r border-l border-[rgb(239, 243, 244)] w-[600px]">
       <CreateTweet />

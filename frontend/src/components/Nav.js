@@ -1,13 +1,4 @@
-import React from "react";
 import NavItem from "./NavItem";
-
-// Icons react-icons
-// import { RiHome5Line } from "react-icons/ri";
-// import { HiHashtag } from "react-icons/hi";
-// import { BsBell, BsBookmark } from "react-icons/bs";
-// import { MdMailOutline } from "react-icons/md";
-// import { RiFileList2Line, RiUserLine } from "react-icons/ri";
-// import { CgMoreO } from "react-icons/cg";
 
 //icons heroicons
 import {
