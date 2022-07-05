@@ -2,7 +2,6 @@
   "name": "twitter-clone",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://noah-twitter-clone.herokuapp.com",
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.0",

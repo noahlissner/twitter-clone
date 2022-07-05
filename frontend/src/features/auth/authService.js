@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/users/";
+const API_URL = "https://noah-twitter-clone.herokuapp.com/api/users/";
 
 // Register
 const register = async (userData) => {

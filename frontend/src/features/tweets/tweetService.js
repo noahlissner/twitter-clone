@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/tweets/";
+const API_URL = "https://noah-twitter-clone.herokuapp.com/api/tweets/";
 
 // Create new tweet
 const createTweet = async (tweetData, token) => {
